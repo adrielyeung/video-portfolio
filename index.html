@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Adriel Yeung - Professional Video Editor</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="logo">
+                Adriel Yeung
+            </div>
+            <ul class="nav-menu">
+                <li><a href="index.html" class="nav-link active">Home</a></li>
+                <li><a href="videos.html" class="nav-link">Videos</a></li>
+                <li><a href="testimonials.html" class="nav-link">Testimonials</a></li>
+                <li><a href="#contact" class="nav-link cta-btn">Contact</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- About Section -->
+    <section class="about">
+        <div class="about-container">
+            <div class="about-text">
+                <h2>About Me</h2>
+                <p>I am Adriel. I make compelling visual stories that captivate audiences and drive engagement.</p>
+                <p>Specialising in <strong>data visualisation</strong>, <strong>motion graphics</strong>, <strong>drone photography</strong>, and <strong>caption design</strong>, I bring your vision to life with cutting-edge techniques and creative storytelling.</p>
+                <div class="highlight-stats">
+                    <div class="stat">
+                        <h3>40+</h3>
+                        <p>Videos on YouTube</p>
+                    </div>
+                    <div class="stat">
+                        <h3>3+</h3>
+                        <p>Years Experience</p>
+                    </div>
+                    <div class="stat">
+                        <h3>18,000+</h3>
+                        <p>Subscribers</p>
+                    </div>
+                    <button class="btn btn-primary btn-stats" onclick="document.getElementById('contact').scrollIntoView({behavior: 'smooth'})">
+                        Get Started
+                    </button>
+                </div>
+            </div>
+            <div class="about-image">
+                <div class="placeholder-image">
+                    <i class="fas fa-user-circle"></i>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Quick Services Preview -->
+    <section class="services-preview">
+        <h2>Services I Offer</h2>
+        <div class="services-grid">
+            <div class="service-card">
+                <div class="service-video">
+                    <video autoplay muted loop playsinline>
+                        <source src="videos/Data_visualise_example.mp4" type="video/mp4">
+                        Your browser does not support the video tag.
+                    </video>
+                </div>
+                <div class="service-info">
+                    <h3>Data Visualisation</h3>
+                    <p>Use animated infographics to present complex data in an engaging way.</p>
+                </div>
+            </div>
+            <div class="service-card">
+                <div class="service-video">
+                    <video autoplay muted loop playsinline>
+                        <source src="videos/Motion_graphics_example.mp4" type="video/mp4">
+                        Your browser does not support the video tag.
+                    </video>
+                </div>
+                <div class="service-info">
+                    <h3>Motion Graphics</h3>
+                    <p>Custom animations (specialising in maps) to illustrate your story.</p>
+                </div>
+            </div>
+            <div class="service-card">
+                <div class="service-video">
+                    <video autoplay muted loop playsinline>
+                        <source src="videos/Drone_photography_example.mp4" type="video/mp4">
+                        Your browser does not support the video tag.
+                    </video>
+                </div>
+                <div class="service-info">
+                    <h3>Drone Photography</h3>
+                    <p>Aerial shots to capture your story from a unique perspective.</p>
+                </div>
+            </div>
+            <div class="service-card">
+                <div class="service-video">
+                    <video autoplay muted loop playsinline>
+                        <source src="videos/Caption_design_example.mp4" type="video/mp4">
+                        Your browser does not support the video tag.
+                    </video>
+                </div>
+                <div class="service-info">
+                    <h3>Caption Design</h3>
+                    <p>Coloured subtitles to label each speaker for accessibility.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Social Media Section -->
+    <section class="social-section">
+        <h2>Follow My Work</h2>
+        <div class="social-icons">
+            <a href="https://youtube.com" target="_blank" class="social-icon" title="YouTube">
+                <i class="fab fa-youtube"></i>
+            </a>
+            <a href="https://instagram.com" target="_blank" class="social-icon" title="Instagram">
+                <i class="fab fa-instagram"></i>
+            </a>
+            <a href="https://linkedin.com" target="_blank" class="social-icon" title="LinkedIn">
+                <i class="fab fa-linkedin"></i>
+            </a>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section class="contact" id="contact">
+        <div class="contact-container">
+            <h2>Let's Work Together</h2>
+            <p>Ready to bring your vision to life? Get in touch!</p>
+            <form class="contact-form" onsubmit="handleSubmit(event)">
+                <input type="text" placeholder="Your Name" required>
+                <input type="email" placeholder="Your Email" required>
+                <textarea placeholder="Tell me about your project..." rows="5" required></textarea>
+                <button type="submit" class="btn btn-primary">Send Message</button>
+            </form>
+            <div class="contact-info">
+                <p><i class="fas fa-envelope"></i> alex@videostudio.com</p>
+                <p><i class="fas fa-phone"></i> (555) 123-4567</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <p>&copy; 2026 Adriel Yeung- Professional Video Editor. All rights reserved.</p>
+        <div class="footer-links">
+            <a href="#contact">Contact</a>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
