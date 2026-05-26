@@ -46,15 +46,17 @@ function handleSubmit(event) {
     event.preventDefault();
 
     const form = event.target;
-    const formData = new FormData(form);
+    const name = form.querySelector('input[type="text"]').value.trim();
+    const email = form.querySelector('input[type="email"]').value.trim();
+    const message = form.querySelector('textarea').value.trim();
 
-    // Simulate form submission
-    const name = form.querySelector('input[type="text"]').value;
+    const subject = encodeURIComponent(`Website inquiry from ${name}`);
+    const body = encodeURIComponent(`Name: ${name}\nEmail: ${email}\n\nMessage:\n${message}`);
+    const mailto = `mailto:adrielcityexplorer@gmail.com?subject=${subject}&body=${body}`;
 
-    // Show success message
-    alert(`Thank you ${name}! I'll get back to you soon.`);
+    window.location.href = mailto;
+    alert(`Thank you ${name}! Your email client should open to send the message.`);
 
-    // Reset form
     form.reset();
 }
 
@@ -213,3 +215,118 @@ window.addEventListener('load', createScrollToTopButton);
 
 // Console message
 console.log('🎬 Welcome to VideoStudio Portfolio! Let\'s create something amazing.');
+
+// Showreel: autoplay muted on load and size to native video dimensions (scaled by CSS max-width)
+document.addEventListener('DOMContentLoaded', () => {
+    const video = document.getElementById('showreel');
+    const container = document.querySelector('.showreel-container');
+    const playPauseBtn = document.getElementById('playPauseBtn');
+    const muteBtn = document.getElementById('muteBtn');
+    if (!video) return;
+
+    // Ensure muted autoplay behavior
+    video.muted = true;
+    video.playsInline = true;
+
+    // No native sizing here — CSS handles responsive 16:9 sizing via `aspect-ratio`.
+
+    // Attempt to play (muted autoplay is allowed in modern browsers)
+    const tryPlay = async () => {
+        try { await video.play(); } catch (e) { /* autoplay prevented */ }
+    };
+    tryPlay();
+
+    // Wire up controls if present
+    function updatePlayIcon() {
+        if (!playPauseBtn) return;
+        const icon = playPauseBtn.querySelector('i');
+        if (video.paused) {
+            icon.className = 'fas fa-play';
+            playPauseBtn.setAttribute('aria-label', 'Play');
+            playPauseBtn.title = 'Play';
+        } else {
+            icon.className = 'fas fa-pause';
+            playPauseBtn.setAttribute('aria-label', 'Pause');
+            playPauseBtn.title = 'Pause';
+        }
+    }
+
+    function updateMuteIcon() {
+        if (!muteBtn) return;
+        const icon = muteBtn.querySelector('i');
+        if (video.muted || video.volume === 0) {
+            icon.className = 'fas fa-volume-mute';
+            muteBtn.setAttribute('aria-label', 'Unmute');
+            muteBtn.title = 'Unmute';
+        } else {
+            icon.className = 'fas fa-volume-up';
+            muteBtn.setAttribute('aria-label', 'Mute');
+            muteBtn.title = 'Mute';
+        }
+    }
+
+    if (playPauseBtn) {
+        playPauseBtn.addEventListener('click', () => {
+            if (video.paused) video.play(); else video.pause();
+            updatePlayIcon();
+        });
+    }
+
+    if (muteBtn) {
+        muteBtn.addEventListener('click', () => {
+            video.muted = !video.muted;
+            updateMuteIcon();
+        });
+    }
+
+    video.addEventListener('play', updatePlayIcon);
+    video.addEventListener('pause', updatePlayIcon);
+    video.addEventListener('volumechange', updateMuteIcon);
+
+    updatePlayIcon();
+    updateMuteIcon();
+
+    // Auto-hide controls after 3s of inactivity; show on mouse/pointer activity
+    let hideTimeout = null;
+    const HIDE_DELAY = 3000;
+
+    function showControls() {
+        if (container) container.classList.remove('controls-hidden');
+        resetHideTimer();
+    }
+
+    function hideControls() {
+        if (container) container.classList.add('controls-hidden');
+    }
+
+    function resetHideTimer() {
+        if (hideTimeout) clearTimeout(hideTimeout);
+        hideTimeout = setTimeout(() => {
+            // Only hide when video is playing to avoid hiding while paused if desired
+            hideControls();
+        }, HIDE_DELAY);
+    }
+
+    // Event listeners to show controls on interaction
+    if (container) {
+        container.addEventListener('mousemove', showControls);
+        container.addEventListener('pointermove', showControls);
+        container.addEventListener('touchstart', showControls);
+        container.addEventListener('mouseenter', showControls);
+        container.addEventListener('mouseleave', () => {
+            // show controls when leaving container (so user can access) or hide immediately
+            hideControls();
+        });
+
+        // Prevent controls from hiding while interacting with them
+        const controls = container.querySelector('.video-controls');
+        if (controls) {
+            controls.addEventListener('mousemove', showControls);
+            controls.addEventListener('click', showControls);
+            controls.addEventListener('touchstart', showControls);
+        }
+
+        // Initialize: show controls briefly then hide
+        showControls();
+    }
+});

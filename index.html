@@ -29,7 +29,7 @@
             <div class="about-text">
                 <h2>About Me</h2>
                 <p>I am Adriel. I make compelling visual stories that captivate audiences and drive engagement.</p>
-                <p>Specialising in <strong>data visualisation</strong>, <strong>motion graphics</strong>, <strong>drone photography</strong>, and <strong>caption design</strong>, I bring your vision to life with cutting-edge techniques and creative storytelling.</p>
+                <p>Specialising in <strong>data visualisation</strong>, <strong>motion graphics</strong>, and <strong>drone photography</strong>, I bring your vision to life with cutting-edge techniques and creative storytelling.</p>
                 <div class="highlight-stats">
                     <div class="stat">
                         <h3>40+</h3>
@@ -40,7 +40,7 @@
                         <p>Years Experience</p>
                     </div>
                     <div class="stat">
-                        <h3>18,000+</h3>
+                        <h3>19,000+</h3>
                         <p>Subscribers</p>
                     </div>
                     <button class="btn btn-primary btn-stats" onclick="document.getElementById('contact').scrollIntoView({behavior: 'smooth'})">
@@ -49,8 +49,15 @@
                 </div>
             </div>
             <div class="about-image">
-                <div class="placeholder-image">
-                    <i class="fas fa-user-circle"></i>
+                <div class="showreel-container">
+                    <video id="showreel" class="showreel-video" playsinline autoplay muted loop preload="metadata">
+                        <source src="videos/showreel.mp4" type="video/mp4">
+                        Your browser does not support the video tag.
+                    </video>
+                    <div class="video-controls">
+                        <button id="playPauseBtn" class="video-btn" aria-label="Play" title="Play"><i class="fas fa-play"></i></button>
+                        <button id="muteBtn" class="video-btn" aria-label="Mute" title="Mute"><i class="fas fa-volume-mute"></i></button>
+                    </div>
                 </div>
             </div>
         </div>
@@ -69,7 +76,7 @@
                 </div>
                 <div class="service-info">
                     <h3>Data Visualisation</h3>
-                    <p>Use animated infographics to present complex data in an engaging way.</p>
+                    <p>Use animated infographics to present clear trends in complex data.</p>
                 </div>
             </div>
             <div class="service-card">
@@ -93,19 +100,7 @@
                 </div>
                 <div class="service-info">
                     <h3>Drone Photography</h3>
-                    <p>Aerial shots to capture your story from a unique perspective.</p>
-                </div>
-            </div>
-            <div class="service-card">
-                <div class="service-video">
-                    <video autoplay muted loop playsinline>
-                        <source src="videos/Caption_design_example.mp4" type="video/mp4">
-                        Your browser does not support the video tag.
-                    </video>
-                </div>
-                <div class="service-info">
-                    <h3>Caption Design</h3>
-                    <p>Coloured subtitles to label each speaker for accessibility.</p>
+                    <p>Aerial shots to elevate the clarity of your story.</p>
                 </div>
             </div>
         </div>
@@ -139,8 +134,7 @@
                 <button type="submit" class="btn btn-primary">Send Message</button>
             </form>
             <div class="contact-info">
-                <p><i class="fas fa-envelope"></i> alex@videostudio.com</p>
-                <p><i class="fas fa-phone"></i> (555) 123-4567</p>
+                <p><i class="fas fa-envelope"></i> <a href="mailto:adrielcityexplorer@gmail.com">adrielcityexplorer@gmail.com</a></p>
             </div>
         </div>
     </section>
